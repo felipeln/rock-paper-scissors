@@ -81,47 +81,74 @@ main{
 
 
 /* ! container right */
-/* .container-right{
+.container-right{
   width: 65%;
-} */
+}
+
+.card-box-container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.3rem;
+}
+
+.card-box{
+  height: 9rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-versus{
+  display: flex;
+  flex-direction: column;
+  padding: 0.1rem 0;
+  height: 300px;
+
+  justify-content: center;
+}
+
+.card-infield{
+  width: 8rem;
+  height: 11.2rem;
+  border-radius: 8px;
+  border: 5px solid #fff;
+}
 
 /* .card-infield img{
   width: 125px;
   height: 180px;
-  border: 2px solid #fff;
 } */
 
 
-/* .versus-img{
+.versus-img{
   height: 100px;
-} */
+}
+
+.versus-top,.versus-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.versus-bottom{
+  margin-top: 1rem;
+}
+
+
+
+
 
 /* #player-field-card{
   width: 125px;
   height: 180px;
 } */
 
-/* .container-right{
-  width: 65%;
-  
+#next-duel{
+  display: none;
 }
 
-.versus-img{
-  height: 100px;
-}
-
-.card-box-container{
-  width: 100%;
-  height: 100vh;
-} */
-
-/* 
-
-.card-box__container{
-  width: 100%;
-  height: 100vh; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0.3rem;
-} */
