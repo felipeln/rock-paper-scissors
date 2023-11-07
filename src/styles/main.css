@@ -22,8 +22,10 @@ main{
   overflow: hidden;
   display: flex;
   justify-content: center;
+
 }
 #bg-video{
+  width: 100vw;
   height: 100vh;
 }
 .bg-video-wrapper::after{
@@ -37,7 +39,6 @@ main{
    rgba(0,0,0,1) 0%, 
    rgba(0,0,0,0.8) 50%, 
    rgba(0,0,0,0.9) 100%);
-
 }
 
 /* ! container left */
@@ -54,7 +55,8 @@ main{
   background-color: #fff;
   padding: 30px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 10px;
 }
 .frame{
   border: 3px solid #000;
@@ -115,13 +117,15 @@ main{
   width: 8rem;
   height: 11.2rem;
   border-radius: 8px;
-  border: 5px solid #fff;
+  border: 4px solid #fff;
 }
 
-/* .card-infield img{
-  width: 125px;
-  height: 180px;
-} */
+.card-infield img{
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+
 
 
 .versus-img{
@@ -152,3 +156,13 @@ main{
   display: none;
 }
 
+#next-duel.active{
+  display: block;
+}
+
+.card{
+  transition: all .2s;
+}
+.card:hover{
+  transform: scale(1.2);
+}
