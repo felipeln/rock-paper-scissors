@@ -27,7 +27,6 @@ const state = {
   }
 }
 
-// const pathImages = '.src/assets/icons/'
 const pathImages = './src/assets/icons/'
 
 const cardsData = [
@@ -110,7 +109,7 @@ async function setCardsField(cardId){
   const computerCardId = await getRandomCardId()
   state.view.fieldCards.computer.src = `${cardsData[computerCardId].img}`
 
- 
+  showHiddenCardFieldsImages(true) 
 
   let duelResult = await checkDuelResults(cardId,computerCardId)
 
@@ -130,6 +129,11 @@ async function clearDrawCards(){
     img.remove()
   })
 
+  state.view.cardSprites.avatar.src = ''
+  state.view.cardSprites.type.innerText = ''
+  state.view.cardSprites.avatar.innerText = ''
+  state.view.cardSprites.name.innerText = ''
+
 }
 
 
@@ -137,15 +141,15 @@ async function checkDuelResults(playerCardId, computerCardId){
   let duelResults = "Empate"
    if(cardsData[playerCardId].WinOf.includes(computerCardId)){
     
-    duelResults = 'Ganhou'
+    duelResults = 'win'
+    await playAudio(duelResults)
     state.value.playerScore++
   }
   if(cardsData[playerCardId].loseOf.includes(computerCardId)){
-    duelResults = 'Perdeu'
+    duelResults = 'lose'
+    await playAudio(duelResults)
     state.value.computerScore++
   }
-
- 
   return duelResults
 }
 
@@ -170,14 +174,46 @@ async function resetDuel(){
   init()
 }
 
+// adiciona a função resetDuel no botão
 state.actions.button.addEventListener('click', resetDuel)
+
+async function showHiddenCardFieldsImages(value) {
+  if (value === true) {
+    state.view.fieldCards.player.style.display = "block";
+    state.view.fieldCards.computer.style.display = "block";
+  }
+  if (value === false) {
+    state.view.fieldCards.player.style.display = "none";
+    state.view.fieldCards.computer.style.display = "none";
+  }
+}
+
+async function playAudio(status){
+  const audio = new Audio(`/src/assets/audio/${status}.wav`)
+  audio.volume = 0.2
+  
+
+  try {
+    audio.play()
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 
 function init(){
+
+  showHiddenCardFieldsImages(false)
+
   drawCards(5,state.view.drawBoxes.player)
   drawCards(5,state.view.drawBoxes.computer)
 
+  const bgm = document.querySelector('#bg-music')
+  bgm.volume = 0.1
+  bgm.play()
+
 }
+
 
 
 init()
